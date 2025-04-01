@@ -16,12 +16,12 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
+				<a href="index.html" class="title"><i class="fa fa-home" style="font-size:36px"></i></a>
 				<nav>
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
+						<li><a href="index.html#two" class="active">Other Projects</a></li>
+						<li><a href="index.html#three">Contact</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -32,10 +32,45 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">A Generic Page</h1>
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<h1 class="major">File Sharing</h1>
+							<span class="image fit"><img src="images/filesharing.png" alt="" /></span>
+							<p>This project is a Python-based file-sharing application that allows users to transfer files quickly and securely over a network. 
+								Inspired by popular file-sharing tools like ShareIt, this system enables fast, peer-to-peer file transfer without requiring third-party dependencies or cloud storage. 
+								It is designed to work on local networks and can be expanded to support remote transfers with additional configurations.</p>
+							<p><b>Key Features:</b> <br>
+								<b>✅ Peer-to-Peer File Sharing</b>: Direct communication between sender and receiver without cloud dependency. <br>
+								<b>✅ Secure & Reliable Data Transfer:</b> Ensures error-free transmission of files over a stable connection. <br>
+								<b>✅ Lightweight & Fast:</b> No need for bulky installations; runs efficiently with minimal system resources. <br>
+								<b>✅ User-Friendly Interface:</b> Simple command-line or GUI-based interaction for ease of use. <br>
+								<b>✅ Multi-Device Compatibility:</b> Works across different operating systems (Windows, macOS, Linux). <br>
+								<b>✅ No Internet Required:</b> Transfers files within the same network, making it ideal for offline sharing.</p>
+							<p><b>Technology Stack:</b> <br>
+								This project primarily utilizes Python’s socket programming to establish network communication between devices. 
+								The core technologies and libraries used include: <br>
+								
+								<b>1️⃣ Programming Language </b><br>
+								<b>&emsp;&emsp;🔹 Python</b> – Chosen for its simplicity, cross-platform capabilities, and powerful networking libraries. <br>
+								
+								<b>2️⃣ Networking & Communication </b><br>
+								<b>&emsp;&emsp;🔹 Socket Library</b> – Facilitates client-server communication for file transfer. <br>
+								<b>&emsp;&emsp;🔹 TCP Protocol</b> – Ensures reliable, ordered, and error-checked data transmission. <br>
+								<b>&emsp;&emsp;🔹 IP Addressing & Port Handling</b> – Configurable to establish stable network connections. <br>
+								
+								<b>3️⃣ File Handling & System Interaction</b> <br>
+								<b>&emsp;&emsp;🔹 os & shutil Modules</b> – Used for handling file operations like reading, writing, and storing files. <br>
+								<b>&emsp;&emsp;🔹 Threading Module</b> – Allows multiple connections simultaneously, enabling concurrent file transfers. <br>
+								 
+								<b>4️⃣ User Interface (Optional Enhancements)</b> <br>
+								<b>&emsp;&emsp;🔹 Tkinter or PyQt</b> – (Planned) For a graphical user interface to enhance usability. <br>
+								<b>&emsp;&emsp;🔹 Command-Line Interface (CLI)</b> – Simple text-based interface for efficient operation. <br>
+								</p>
+							<p><b>How It Works: <br> </b>
+								1. The sender selects a file to share. <br>
+								2. The receiver establishes a connection using the sender’s IP address and port. <br>
+								3. A TCP socket connection is created between both devices. <br>
+								4. The sender transfers the file in chunks to ensure smooth transmission. <br>
+								5. The receiver receives, verifies, and saves the file to the specified directory. <br>
+								6. Upon completion, both devices are notified of a successful transfer.</p>
 						</div>
 					</section>
 

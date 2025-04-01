@@ -16,15 +16,16 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
+				<a href="index.html" class="title"><i class="fa fa-home" style="font-size:36px"></i></a>
 				<nav>
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
+						<li><a href="index.html#two" class="active">Other Projects</a></li>
+						<li><a href="index.html#three">Contact</a></li>
 					</ul>
 				</nav>
 			</header>
+
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -32,11 +33,31 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">A Generic Page</h1>
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-						</div>
+							<h1 class="major">Hangman Game</h1>
+							<span class="image fit"><img src="images/hangmangame.png" alt="" /></span>
+							<p>The Hangman game is a Python-based graphical version of the classic Hangman game. 
+								It provides an interactive interface where players guess a randomly chosen word, one letter at a time. 
+								Correct guesses reveal the letters in the word, while incorrect guesses gradually complete the hangman figure. 
+								The game ends when the player either guesses the word correctly or loses after reaching the maximum number of incorrect attempts.</p>
+							<p><b>Key Features:</b> <br>
+								<b>✅ Interactive GUI</b> – Designed using Tkinter, making it user-friendly and visually appealing. <br>
+								<b>✅ Random Word Selection</b> – The game selects a word randomly from a predefined list, ensuring variety in gameplay. <br>
+								<b>✅ Input Validation</b> – Prevents duplicate guesses and handles user input errors effectively. <br>
+								<b>✅ Visual Feedback</b> – Incorrect guesses lead to the progressive drawing of the hangman figure, providing a clear indication of the player's progress. <br>
+								<b>✅ Win/Loss Conditions</b> – The game announces victory when the word is guessed correctly and displays a loss message when the hangman is fully drawn.</p>
+							<p><b>Tech Stack:</b> <br>
+								<b>🔹 Programming Language:</b> Python <br>
+								<b>🔹 GUI Framework:</b> Tkinter (for building the graphical user interface) <br>
+								<b>🔹 Randomization:</b> Python’s random module for selecting words <br>
+								<b>🔹 Event Handling:</b> Tkinter’s built-in event handling system to process user input dynamically <br>
+								<b>🔹 Logic Handling:</b> Python functions and loops for checking letter matches and updating the game state</p>
+							<p><b>How It Works:</b> <br>
+								1. The game initializes by selecting a random word and displaying blank spaces for each letter. <br>
+								2. The player enters a letter guess via the interface. <br>
+								3. If the letter is in the word, it appears in the correct position(s); if not, a part of the hangman figure is drawn. <br>
+								4. The game continues until the player either correctly guesses the word or loses by exceeding the allowed number of incorrect guesses. <br>
+								5. A final message displays whether the player has won or lost, with an option to restart the game.</p>
+							</div>
 					</section>
 
 			</div>
