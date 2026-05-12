@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshit Sengar — Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+#hero {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 3.5rem;
+  position: relative;
+  gap: 4rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 50%, rgba(232,255,71,.05) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,71,71,.04) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,255,71,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,255,71,.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-left { position: relative; z-index:1; }
+.hero-eyebrow {
+  display: flex; align-items:center; gap:.8rem;
+  font-size:.68rem; font-weight:600;
+  letter-spacing:.25em; text-transform:uppercase;
+  color: var(--accent); margin-bottom: 2rem;
+  opacity:0; animation: up .8s .2s cubic-bezier(.16,1,.3,1) forwards;
+}
+.eyebrow-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(1.5);} }
+@keyframes up { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:none;} }
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 10vw, 9.5rem);
+  line-height: .88;
+  letter-spacing: .03em;
+  margin-bottom: 2rem;
+  opacity:0; animation: up .9s .35s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-name .outline {
+  -webkit-text-stroke: 2px var(--text);
+  color: transparent;
+}
+.hero-name .yellow { color: var(--accent); }
+
+.hero-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+  line-height: 1.6;
+  opacity:0; animation: up .9s .5s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-tagline strong { color:var(--text); font-style:normal; font-family:var(--font-body); font-weight:500; }
+
+.hero-ctas {
+  display:flex; gap:1rem; flex-wrap:wrap;
+  opacity:0; animation: up .9s .65s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+.hero-right {
+  position: relative; z-index:1;
+  display: flex; flex-direction:column; gap:1.5rem;
+  opacity:0; animation: up .9s .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.8rem 2rem;
+  display: flex; align-items:center; gap:1.5rem;
+  position: relative; overflow:hidden;
+  transition: border-color .3s, transform .3s;
+}
+.hero-stat-card:hover { border-color:var(--accent-border); transform:translateX(6px); }
+.hero-stat-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0;
+  width:3px; background:var(--accent);
+  transform:scaleY(0); transition:transform .3s;
+  transform-origin:bottom;
+}
+.hero-stat-card:hover::before { transform:scaleY(1); }
+.stat-num {
+  font-family:var(--font-display);
+  font-size:3.2rem;
+  color:var(--accent);
+  line-height:1;
+  flex-shrink:0;
+}
+.stat-info {}
+.stat-title { font-size:.9rem; font-weight:600; margin-bottom:.25rem; }
+.stat-sub { font-size:.72rem; color:var(--muted); }
+
+.hero-ticker {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  padding:1rem 0;
+  border-top:1px solid var(--border);
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticker-track {
+  display:inline-flex; gap:4rem;
+  animation: ticker 22s linear infinite;
+}
+.ticker-item {
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  letter-spacing:.15em;
+  color:var(--muted2);
+}
+.ticker-item span { color:var(--accent); margin-right:.5rem; }
+@keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ── ABOUT STRIP ── */
+#strip {
+  padding: 5rem 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 4rem;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.strip-divider { background: var(--border); height: 100%; }
+.strip-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.strip-text strong { color:var(--text); font-style:normal; font-family:var(--font-body); font-weight:500; }
+.strip-links { display:flex; flex-direction:column; gap:1rem; }
+.strip-link {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.2rem 1.5rem;
+  border:1px solid var(--border);
+  text-decoration:none;
+  color:var(--text);
+  transition:all .3s;
+  background:var(--card);
+  font-size:.85rem; font-weight:500;
+}
+.strip-link:hover { border-color:var(--accent); color:var(--accent); padding-left:2rem; }
+.strip-link .arrow { font-size:1.1rem; transition:transform .3s; }
+.strip-link:hover .arrow { transform:translateX(4px); }
+
+/* ── FEATURED ── */
+#featured { padding: 5rem 3.5rem; }
+.feat-grid {
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:1.2rem;
+}
+.feat-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:2.5rem;
+  position:relative; overflow:hidden;
+  transition:all .35s;
+  text-decoration:none; color:var(--text);
+  display:flex; flex-direction:column;
+}
+.feat-card:hover { border-color:var(--accent-border); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.feat-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width .4s; }
+.feat-card:hover::after { width:100%; }
+.feat-card.big { grid-row: span 2; }
+.feat-num { font-family:var(--font-display); font-size:5rem; color:rgba(232,255,71,.08); line-height:1; margin-bottom:1rem; }
+.feat-title { font-family:var(--font-display); font-size:1.8rem; letter-spacing:.04em; margin-bottom:.6rem; }
+.feat-tech { font-size:.65rem; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+.feat-desc { font-size:.78rem; color:var(--muted); line-height:1.8; flex:1; }
+.feat-link { margin-top:1.5rem; font-size:.7rem; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; display:flex; align-items:center; gap:.4rem; }
+
+@media(max-width:900px){
+  #hero { grid-template-columns:1fr; padding:2rem 1.5rem; }
+  .hero-right { display:none; }
+  #strip { grid-template-columns:1fr; }
+  .strip-divider { display:none; }
+  #featured { padding:4rem 1.5rem; }
+  .feat-grid { grid-template-columns:1fr; }
+  .feat-card.big { grid-row:auto; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">HS.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page page-fade">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        Open to opportunities
+      </div>
+      <h1 class="hero-name">
+        HAR<span class="yellow">SH</span>IT<br>
+        <span class="outline">SENGAR</span>
+      </h1>
+      <p class="hero-tagline">
+        <strong>Spring Boot Developer</strong> building scalable backend systems —
+        currently shaping the Telecom domain at <strong>Infosys Ltd.</strong>
+      </p>
+      <div class="hero-ctas">
+        <a href="projects.html" class="btn btn-solid"><span>View Projects</span></a>
+        <a href="contact.html" class="btn"><span>Get In Touch</span></a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stat-card">
+        <div class="stat-num">7.9</div>
+        <div class="stat-info">
+          <div class="stat-title">B.Tech CGPA</div>
+          <div class="stat-sub">Information Technology · RTU 2025</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-info">
+          <div class="stat-title">Months at Infosys</div>
+          <div class="stat-sub">Intensive training + Telecom project</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-info">
+          <div class="stat-title">Projects Built</div>
+          <div class="stat-sub">Java, Spring Boot, Python & more</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-num">15+</div>
+        <div class="stat-info">
+          <div class="stat-title">Technologies</div>
+          <div class="stat-sub">Backend, tools, databases & frameworks</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-ticker">
+      <div class="ticker-track">
+        <span class="ticker-item"><span>▸</span>Spring Boot</span>
+        <span class="ticker-item"><span>▸</span>Microservices</span>
+        <span class="ticker-item"><span>▸</span>Java</span>
+        <span class="ticker-item"><span>▸</span>SonarQube</span>
+        <span class="ticker-item"><span>▸</span>Jenkins</span>
+        <span class="ticker-item"><span>▸</span>MySQL</span>
+        <span class="ticker-item"><span>▸</span>Python</span>
+        <span class="ticker-item"><span>▸</span>REST APIs</span>
+        <span class="ticker-item"><span>▸</span>GitHub</span>
+        <span class="ticker-item"><span>▸</span>Telecom Domain</span>
+        <!-- duplicate for seamless -->
+        <span class="ticker-item"><span>▸</span>Spring Boot</span>
+        <span class="ticker-item"><span>▸</span>Microservices</span>
+        <span class="ticker-item"><span>▸</span>Java</span>
+        <span class="ticker-item"><span>▸</span>SonarQube</span>
+        <span class="ticker-item"><span>▸</span>Jenkins</span>
+        <span class="ticker-item"><span>▸</span>MySQL</span>
+        <span class="ticker-item"><span>▸</span>Python</span>
+        <span class="ticker-item"><span>▸</span>REST APIs</span>
+        <span class="ticker-item"><span>▸</span>GitHub</span>
+        <span class="ticker-item"><span>▸</span>Telecom Domain</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section id="strip">
+    <p class="strip-text reveal">
+      Passionate about <strong>clean architecture</strong> and <strong>high-quality code</strong> —
+      I build backend systems that scale, and I bring curiosity to every problem I touch.
+    </p>
+    <div class="strip-divider"></div>
+    <div class="strip-links reveal reveal-d2">
+      <a href="about.html" class="strip-link">About Me <span class="arrow">→</span></a>
+      <a href="experience.html" class="strip-link">Experience at Infosys <span class="arrow">→</span></a>
+      <a href="skills.html" class="strip-link">Technical Skills <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section id="featured">
+    <div class="label reveal">Featured Work</div>
+    <div class="feat-grid">
+      <a href="projects.html" class="feat-card big reveal">
+        <div class="feat-num">01</div>
+        <div class="feat-title">InfyCinema</div>
+        <div class="feat-tech">Java · Spring Boot · Microservices · HSQL · React</div>
+        <p class="feat-desc">An online movie ticket booking system similar to BookMyShow. Built with a full microservices architecture — users can browse films, pick seats on an interactive map, complete payments, and rate movies. Authentication enforced throughout.</p>
+        <div class="feat-link">View All Projects →</div>
+      </a>
+      <a href="projects.html" class="feat-card reveal reveal-d1">
+        <div class="feat-num">02</div>
+        <div class="feat-title">Virtual Assistant</div>
+        <div class="feat-tech">Python · Speech Recognition</div>
+        <p class="feat-desc">AI-powered voice assistant with web search, app control, and automation via speech commands.</p>
+      </a>
+      <a href="projects.html" class="feat-card reveal reveal-d2">
+        <div class="feat-num">03</div>
+        <div class="feat-title">File Sharing App</div>
+        <div class="feat-tech">Python · Networking</div>
+        <p class="feat-desc">Peer-to-peer file transfer app inspired by ShareIt — no external dependencies required.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Harshit Sengar</span>
+    <span>Built with HTML · CSS · JS &nbsp;|&nbsp; <a href="https://github.com/Harshitsengar1202" target="_blank">GitHub ↗</a></span>
+  </footer>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

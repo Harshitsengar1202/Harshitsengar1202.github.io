@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Harshit Sengar</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#proj-hero {
+  padding:5rem 3.5rem 3rem;
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.proj-bg-text {
+  position:absolute; right:-5%; top:-15%;
+  font-family:var(--font-display);
+  font-size:20vw; color:rgba(232,255,71,.015);
+  line-height:1; pointer-events:none; user-select:none;
+}
+.page-heading { font-family:var(--font-display); font-size:clamp(4rem,9vw,8rem); line-height:.9; letter-spacing:.04em; margin-bottom:1.5rem; }
+.page-heading .accent { color:var(--accent); }
+.page-sub { font-family:var(--font-serif); font-style:italic; font-size:1.2rem; color:var(--muted); max-width:600px; line-height:1.7; }
+
+/* FILTER TABS */
+.filter-bar {
+  display:flex; gap:.5rem; padding:2rem 3.5rem 0;
+  flex-wrap:wrap;
+}
+.filter-btn {
+  padding:.45rem 1.2rem;
+  font-size:.68rem; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase;
+  border:1px solid var(--border);
+  background:transparent; color:var(--muted);
+  cursor:none; transition:all .25s;
+}
+.filter-btn:hover, .filter-btn.on {
+  border-color:var(--accent); color:var(--accent); background:var(--accent-dim);
+}
+.filter-btn.on { color:var(--bg); background:var(--accent); border-color:var(--accent); }
+
+/* PROJECTS GRID */
+#projects-list { padding:3rem 3.5rem 5rem; }
+.projects-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
+}
+
+.proj-card {
+  background:var(--card); border:1px solid var(--border);
+  display:flex; flex-direction:column;
+  transition:all .4s; position:relative; overflow:hidden;
+}
+.proj-card:hover { border-color:var(--accent-border); transform:translateY(-8px); box-shadow:0 30px 80px rgba(0,0,0,.5); }
+
+.proj-card-header {
+  padding:2rem 2rem 1.2rem;
+  border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:flex-start;
+}
+.proj-num { font-family:var(--font-display); font-size:4rem; color:rgba(232,255,71,.1); line-height:1; }
+.proj-type { font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+
+.proj-card-body { padding:1.5rem 2rem; flex:1; display:flex; flex-direction:column; }
+.proj-title { font-family:var(--font-display); font-size:1.8rem; letter-spacing:.04em; margin-bottom:.5rem; }
+.proj-tech { font-size:.62rem; color:var(--accent); letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; font-weight:600; }
+.proj-desc { font-size:.78rem; color:var(--muted); line-height:1.85; flex:1; }
+
+.proj-card-footer {
+  padding:1.2rem 2rem;
+  border-top:1px solid var(--border);
+  display:flex; gap:.5rem; flex-wrap:wrap;
+}
+
+/* FEATURED (big card) */
+.proj-card.featured {
+  grid-column:span 2;
+}
+.proj-card.featured .proj-num { font-size:6rem; }
+.proj-card.featured .proj-title { font-size:2.5rem; }
+
+.proj-card::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:3px; background:var(--accent);
+  transition:width .5s cubic-bezier(.16,1,.3,1);
+}
+.proj-card:hover::after { width:100%; }
+
+/* GitHub CTA */
+#github-cta {
+  padding:4rem 3.5rem;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between; gap:3rem;
+}
+.gh-text h2 { font-family:var(--font-display); font-size:3rem; letter-spacing:.05em; margin-bottom:.5rem; }
+.gh-text p { font-size:.85rem; color:var(--muted); max-width:480px; line-height:1.8; }
+
+@media(max-width:900px){
+  #proj-hero,#projects-list,#github-cta { padding:3rem 1.5rem; }
+  .filter-bar { padding:1.5rem 1.5rem 0; }
+  .projects-grid { grid-template-columns:1fr; }
+  .proj-card.featured { grid-column:span 1; }
+  #github-cta { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">HS.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page page-fade">
+
+  <section id="proj-hero">
+    <div class="proj-bg-text">WORK</div>
+    <div class="label reveal">Portfolio</div>
+    <h1 class="page-heading reveal reveal-d1">THINGS<br>I'VE <span class="accent">BUILT.</span></h1>
+    <p class="page-sub reveal reveal-d2">From enterprise-grade booking systems to Python-powered voice assistants — here's what I've shipped.</p>
+  </section>
+
+  <div class="filter-bar reveal">
+    <button class="filter-btn on" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="java">Java / Spring Boot</button>
+    <button class="filter-btn" data-filter="python">Python</button>
+  </div>
+
+  <section id="projects-list">
+    <div class="projects-grid">
+
+      <!-- InfyCinema - FEATURED -->
+      <div class="proj-card featured reveal" data-cat="java">
+        <div class="proj-card-header">
+          <div class="proj-num">01</div>
+          <div class="proj-type">Enterprise · Full Stack</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-title">InfyCinema</div>
+          <div class="proj-tech">Java · Spring Boot · Microservices · HSQL · HTML/CSS · React</div>
+          <p class="proj-desc">
+            An online movie ticket booking system similar to BookMyShow — built during Infosys training as the flagship project. The platform allows logged-in users to view current movies, check theaters and show timings, select seats via an interactive seat map, complete payments, and view booking summaries. Includes a movie rating feature with authentication enforced for booking and rating actions. Built on a full microservices architecture with Spring Boot backend services.
+          </p>
+        </div>
+        <div class="proj-card-footer">
+          <span class="tag">Microservices</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Authentication</span>
+          <span class="tag">Seat Selection</span>
+          <span class="tag">Payment Flow</span>
+        </div>
+      </div>
+
+      <!-- Virtual Assistant -->
+      <div class="proj-card reveal reveal-d1" data-cat="python">
+        <div class="proj-card-header">
+          <div class="proj-num">02</div>
+          <div class="proj-type">AI · Automation</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-title">Virtual Assistant</div>
+          <div class="proj-tech">Python · Pyttsx3 · Speech Recognition · Web APIs</div>
+          <p class="proj-desc">An AI-powered tool that performs tasks via voice commands — searching the web, fetching information, and opening applications. Built with speech recognition and text-to-speech automation. Planned upgrade to full system admin capabilities.</p>
+        </div>
+        <div class="proj-card-footer">
+          <span class="tag">Voice Recognition</span>
+          <span class="tag">Automation</span>
+          <span class="tag">NLP</span>
+        </div>
+      </div>
+
+      <!-- File Sharing -->
+      <div class="proj-card reveal" data-cat="python">
+        <div class="proj-card-header">
+          <div class="proj-num">03</div>
+          <div class="proj-type">Networking · Utility</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-title">File Sharing App</div>
+          <div class="proj-tech">Python · Networking · Socket Programming</div>
+          <p class="proj-desc">A peer-to-peer file transfer application inspired by ShareIt. Allows users to share files over a local network quickly and efficiently — no external dependencies. Clean, fast, and dependency-free.</p>
+        </div>
+        <div class="proj-card-footer">
+          <span class="tag">P2P Transfer</span>
+          <span class="tag">Sockets</span>
+          <span class="tag">LAN</span>
+        </div>
+      </div>
+
+      <!-- Hangman -->
+      <div class="proj-card reveal reveal-d1" data-cat="python">
+        <div class="proj-card-header">
+          <div class="proj-num">04</div>
+          <div class="proj-type">Game · GUI</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-title">Hangman Game</div>
+          <div class="proj-tech">Python · Tkinter · GUI Design</div>
+          <p class="proj-desc">A graphical GUI version of the classic Hangman word-guessing game. One player thinks of a word while the other guesses letters — correct guesses reveal the word, incorrect ones draw the hangman. Fully interactive Tkinter interface.</p>
+        </div>
+        <div class="proj-card-footer">
+          <span class="tag">Tkinter</span>
+          <span class="tag">GUI</span>
+          <span class="tag">Game Logic</span>
+        </div>
+      </div>
+
+      <!-- Student Management -->
+      <div class="proj-card reveal reveal-d2" data-cat="python">
+        <div class="proj-card-header">
+          <div class="proj-num">05</div>
+          <div class="proj-type">Management · CRUD</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-title">Student Management System</div>
+          <div class="proj-tech">Python · SQLite · Data Management</div>
+          <p class="proj-desc">A comprehensive application for managing student records in educational institutes. Handles enrollment, grades, and administrative workflows with a focus on reliability, data integrity, and ease of use.</p>
+        </div>
+        <div class="proj-card-footer">
+          <span class="tag">CRUD</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Data Management</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GitHub CTA -->
+  <div id="github-cta" class="reveal">
+    <div class="gh-text">
+      <h2>MORE ON GITHUB</h2>
+      <p>All source code and project repositories live on my GitHub. Feel free to explore, star, or fork anything you find interesting.</p>
+    </div>
+    <a href="https://github.com/Harshitsengar1202" target="_blank" class="btn btn-solid"><span>Visit GitHub ↗</span></a>
+  </div>
+
+  <footer>
+    <span>© 2025 Harshit Sengar</span>
+    <span><a href="skills.html">View Skills →</a></span>
+  </footer>
+</div>
+
+<script src="main.js"></script>
+<script>
+// Filter logic
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.proj-card').forEach(card => {
+      const show = f === 'all' || card.dataset.cat === f;
+      card.style.display = show ? 'flex' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

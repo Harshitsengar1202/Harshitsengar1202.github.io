@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — Harshit Sengar</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#exp-hero {
+  padding:5rem 3.5rem 3rem;
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.exp-bg-text {
+  position:absolute; right:-5%; top:-10%;
+  font-family:var(--font-display);
+  font-size:22vw; color:rgba(232,255,71,.015);
+  line-height:1; pointer-events:none; user-select:none;
+}
+.page-heading { font-family:var(--font-display); font-size:clamp(4rem,9vw,8rem); line-height:.9; letter-spacing:.04em; margin-bottom:1.5rem; }
+.page-heading .accent { color:var(--accent); }
+.page-sub { font-family:var(--font-serif); font-style:italic; font-size:1.2rem; color:var(--muted); max-width:600px; line-height:1.7; }
+
+/* INFOSYS CARD */
+#infosys { padding:4rem 3.5rem; }
+.company-card {
+  background:var(--card); border:1px solid var(--border);
+  padding:3.5rem; position:relative; overflow:hidden;
+  margin-bottom:2rem;
+}
+.company-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:linear-gradient(to bottom, var(--accent), transparent);
+}
+.company-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2.5rem; flex-wrap:wrap; gap:1.5rem; }
+.co-name { font-family:var(--font-display); font-size:3.5rem; letter-spacing:.05em; margin-bottom:.3rem; }
+.co-role { font-size:.8rem; font-weight:600; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; }
+.co-meta { text-align:right; }
+.co-period { font-family:var(--font-display); font-size:1.4rem; color:var(--muted); }
+.co-loc { font-size:.72rem; color:var(--muted); margin-top:.3rem; }
+
+.co-desc { font-size:.85rem; color:var(--muted); line-height:1.9; margin-bottom:2.5rem; max-width:780px; }
+
+.co-phases { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem; }
+.phase-card {
+  background:var(--bg); border:1px solid var(--border);
+  padding:1.8rem;
+  transition:border-color .3s;
+}
+.phase-card:hover { border-color:var(--accent-border); }
+.phase-label { font-size:.62rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:.8rem; }
+.phase-title { font-size:.95rem; font-weight:600; margin-bottom:.5rem; }
+.phase-desc { font-size:.76rem; color:var(--muted); line-height:1.8; }
+
+.co-responsibilities { }
+.resp-title { font-size:.65rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:1.2rem; }
+.resp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+.resp-item {
+  display:flex; gap:.8rem; align-items:flex-start;
+  padding:1.2rem;
+  background:var(--bg); border:1px solid var(--border);
+  font-size:.76rem; color:var(--muted); line-height:1.7;
+  transition:all .3s;
+}
+.resp-item:hover { border-color:var(--accent-border); color:var(--text); }
+.resp-icon { color:var(--accent); flex-shrink:0; font-size:.9rem; margin-top:.1rem; }
+
+/* TRAINING */
+#training { padding:4rem 3.5rem; background:var(--surface); }
+.train-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+.train-card {
+  background:var(--card); border:1px solid var(--border);
+  padding:2rem; transition:all .35s; position:relative; overflow:hidden;
+}
+.train-card:hover { border-color:var(--accent-border); transform:translateY(-5px); }
+.train-card::after { content:''; position:absolute; bottom:0;left:0; width:0; height:2px; background:var(--accent); transition:width .4s; }
+.train-card:hover::after { width:100%; }
+.train-tech { font-family:var(--font-display); font-size:1.6rem; letter-spacing:.05em; margin-bottom:.6rem; }
+.train-desc { font-size:.75rem; color:var(--muted); line-height:1.8; }
+
+/* OTHER EXP */
+#other-exp { padding:4rem 3.5rem; }
+.other-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.5rem; }
+.other-card {
+  background:var(--card); border:1px solid var(--border);
+  padding:2rem; transition:all .3s;
+}
+.other-card:hover { border-color:var(--accent-border); }
+.other-icon { font-size:1.8rem; margin-bottom:1rem; }
+.other-title { font-size:.9rem; font-weight:600; margin-bottom:.5rem; }
+.other-desc { font-size:.76rem; color:var(--muted); line-height:1.8; }
+
+@media(max-width:900px){
+  #exp-hero,#infosys,#training,#other-exp { padding:3rem 1.5rem; }
+  .co-phases,.resp-grid,.train-grid,.other-grid { grid-template-columns:1fr; }
+  .company-card { padding:2rem; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">HS.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page page-fade">
+
+  <section id="exp-hero">
+    <div class="exp-bg-text">EXP</div>
+    <div class="label reveal">Career</div>
+    <h1 class="page-heading reveal reveal-d1">WHERE I'VE<br><span class="accent">WORKED.</span></h1>
+    <p class="page-sub reveal reveal-d2">Building production-grade backend systems in the Telecom domain — and everything that led here.</p>
+  </section>
+
+  <section id="infosys">
+    <div class="company-card reveal">
+      <div class="company-card-top">
+        <div>
+          <div class="co-name">INFOSYS LTD.</div>
+          <div class="co-role">Spring Boot Developer</div>
+        </div>
+        <div class="co-meta">
+          <div class="co-period">Jun 2025 — Apr 2026</div>
+          <div class="co-loc">📍 Mysore &amp; Pune, India</div>
+        </div>
+      </div>
+
+      <p class="co-desc">
+        Joined Infosys as a Systems Engineer and completed 5 months of comprehensive technical training at the Infosys Mysore campus. Subsequently allocated to a Telecom domain project in Pune as a Spring Boot Developer — building, testing, and maintaining production backend services within a microservices architecture.
+      </p>
+
+      <div class="co-phases">
+        <div class="phase-card">
+          <div class="phase-label">Phase 01 · Jun – Oct 2025</div>
+          <div class="phase-title">Technical Training — Mysore</div>
+          <div class="phase-desc">Intensive hands-on training in Java, Spring Boot, HSQL, React basics, and Microservices Architecture. Completed assessments and built the InfyCinema training project.</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-label">Phase 02 · Nov 2025 – Apr 2026</div>
+          <div class="phase-title">Telecom Project — Pune</div>
+          <div class="phase-desc">Deployed to a live Telecom domain project. Developing and maintaining backend RESTful services, ensuring code quality with SonarQube, and collaborating with cross-functional agile teams.</div>
+        </div>
+      </div>
+
+      <div class="co-responsibilities">
+        <div class="resp-title">Key Responsibilities</div>
+        <div class="resp-grid">
+          <div class="resp-item"><span class="resp-icon">▸</span>Developing and maintaining backend RESTful services using Spring Boot</div>
+          <div class="resp-item"><span class="resp-icon">▸</span>Implementing microservices-based architecture patterns</div>
+          <div class="resp-item"><span class="resp-icon">▸</span>Static code analysis and quality enforcement with SonarQube</div>
+          <div class="resp-item"><span class="resp-icon">▸</span>Ensuring performance, scalability, and maintainability</div>
+          <div class="resp-item"><span class="resp-icon">▸</span>Collaborating with cross-functional teams on business requirements</div>
+          <div class="resp-item"><span class="resp-icon">▸</span>Delivering reliable solutions aligned with Telecom domain standards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING TECHNOLOGIES -->
+  <section id="training">
+    <div class="label reveal">Technologies Trained In</div>
+    <div class="train-grid">
+      <div class="train-card reveal">
+        <div class="train-tech">JAVA</div>
+        <div class="train-desc">Core Java, OOP principles, collections, exception handling, and enterprise application patterns.</div>
+      </div>
+      <div class="train-card reveal reveal-d1">
+        <div class="train-tech">SPRING BOOT</div>
+        <div class="train-desc">Spring Boot REST APIs, dependency injection, Spring Data JPA, application configuration, and testing.</div>
+      </div>
+      <div class="train-card reveal reveal-d2">
+        <div class="train-tech">MICROSERVICES</div>
+        <div class="train-desc">Service decomposition, inter-service communication, API gateways, and distributed system patterns.</div>
+      </div>
+      <div class="train-card reveal">
+        <div class="train-tech">SONARQUBE</div>
+        <div class="train-desc">Static code analysis, code smell detection, vulnerability scanning, and maintaining code quality gates.</div>
+      </div>
+      <div class="train-card reveal reveal-d1">
+        <div class="train-tech">HSQL DB</div>
+        <div class="train-desc">In-memory relational database used for training projects — schema design, queries, and JPA integration.</div>
+      </div>
+      <div class="train-card reveal reveal-d2">
+        <div class="train-tech">REACT</div>
+        <div class="train-desc">Frontend basics — components, state, props, and integration with Spring Boot REST APIs.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER EXPERIENCE -->
+  <section id="other-exp">
+    <div class="label reveal">Other Experience</div>
+    <div class="other-grid">
+      <div class="other-card reveal">
+        <div class="other-icon">🏆</div>
+        <div class="other-title">Hackathon Participation</div>
+        <div class="other-desc">Participated in the Government of India Mini Smart India Hackathon (March 2022). Collaborated under tight deadlines to deliver innovative solutions through rapid prototyping and effective teamwork.</div>
+      </div>
+      <div class="other-card reveal reveal-d1">
+        <div class="other-icon">🎯</div>
+        <div class="other-title">Technical Leadership</div>
+        <div class="other-desc">Led the Technical Team during the College Fest — responsible for organizing events, coordinating members, and ensuring flawless technical execution across all activities.</div>
+      </div>
+      <div class="other-card reveal reveal-d2">
+        <div class="other-icon">💻</div>
+        <div class="other-title">Competitive Coding</div>
+        <div class="other-desc">Active participant in various competitive coding challenges — honing algorithmic thinking, data structure application, and time-constrained problem-solving skills.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Harshit Sengar</span>
+    <span><a href="projects.html">View Projects →</a></span>
+  </footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

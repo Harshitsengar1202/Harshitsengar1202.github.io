@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Harshit Sengar</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#about-hero {
+  padding: 5rem 3.5rem 4rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start;
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.ah-bg {
+  position:absolute; right:-10%; top:-20%;
+  font-family:var(--font-display);
+  font-size:28vw; color:rgba(232,255,71,.018);
+  line-height:1; pointer-events:none; user-select:none;
+  letter-spacing:.05em;
+}
+
+.page-heading {
+  font-family:var(--font-display);
+  font-size:clamp(4rem,9vw,8rem);
+  line-height:.9;
+  letter-spacing:.04em;
+  margin-bottom:2rem;
+}
+.page-heading .accent { color:var(--accent); }
+
+.ah-intro {
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:1.2rem;
+  line-height:1.75;
+  color:var(--muted);
+  margin-bottom:2rem;
+}
+.ah-intro strong { color:var(--text); font-style:normal; font-family:var(--font-body); font-weight:500; }
+.ah-body { font-size:.85rem; color:var(--muted); line-height:2; }
+.ah-body p { margin-bottom:1.2rem; }
+
+.ah-info-grid { display:flex; flex-direction:column; gap:0; }
+.info-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.1rem 0;
+  border-bottom:1px solid var(--border);
+  font-size:.8rem;
+}
+.info-row:first-child { border-top:1px solid var(--border); }
+.info-k { color:var(--muted); font-size:.65rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; }
+.info-v { color:var(--text); text-align:right; }
+.info-v a { color:var(--accent); text-decoration:none; }
+
+/* strengths */
+#strengths { padding:5rem 3.5rem; }
+.str-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:3rem; }
+.str-card {
+  background:var(--card); border:1px solid var(--border);
+  padding:2.5rem 2rem;
+  transition:all .35s; position:relative; overflow:hidden;
+}
+.str-card:hover { border-color:var(--accent-border); transform:translateY(-5px); }
+.str-card::after { content:''; position:absolute; bottom:0;left:0; width:0; height:2px; background:var(--accent); transition:width .4s; }
+.str-card:hover::after { width:100%; }
+.str-icon { font-size:2rem; margin-bottom:1.2rem; }
+.str-title { font-family:var(--font-display); font-size:1.4rem; letter-spacing:.05em; margin-bottom:.6rem; }
+.str-desc { font-size:.78rem; color:var(--muted); line-height:1.8; }
+
+/* education */
+#education { padding:5rem 3.5rem; background:var(--surface); }
+.edu-list { display:flex; flex-direction:column; gap:1px; margin-top:3rem; }
+.edu-item {
+  display:grid; grid-template-columns:120px 1fr auto;
+  align-items:center; gap:3rem;
+  padding:2rem 2.5rem;
+  background:var(--card); border:1px solid var(--border);
+  transition:all .3s;
+}
+.edu-item:hover { border-color:var(--accent-border); padding-left:3rem; }
+.edu-year { font-family:var(--font-display); font-size:1.3rem; color:var(--accent); }
+.edu-deg { font-size:.95rem; font-weight:600; margin-bottom:.3rem; }
+.edu-inst { font-size:.75rem; color:var(--muted); }
+.edu-grade {
+  font-family:var(--font-display); font-size:1.6rem; color:var(--accent);
+  white-space:nowrap;
+}
+
+/* activities */
+#activities { padding:5rem 3.5rem; }
+.act-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:3rem; }
+.act-item {
+  padding:2rem;
+  background:var(--card); border:1px solid var(--border);
+  display:flex; gap:1rem; align-items:flex-start;
+  transition:border-color .3s;
+  font-size:.82rem; color:var(--muted); line-height:1.75;
+}
+.act-item:hover { border-color:var(--accent-border); }
+.act-num { font-family:var(--font-display); font-size:1.8rem; color:var(--accent); flex-shrink:0; line-height:1; }
+
+@media(max-width:900px){
+  #about-hero { grid-template-columns:1fr; padding:3rem 1.5rem; gap:3rem; }
+  .str-grid,.act-grid { grid-template-columns:1fr; }
+  .edu-item { grid-template-columns:80px 1fr; }
+  .edu-grade { display:none; }
+  #strengths,#education,#activities { padding:4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">HS.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page page-fade">
+
+  <section id="about-hero">
+    <div class="ah-bg">ABOUT</div>
+    <div class="ah-left">
+      <div class="label reveal">Who I Am</div>
+      <h1 class="page-heading reveal reveal-d1">THE<br>PERSON<br>BEHIND<br>THE <span class="accent">CODE</span></h1>
+      <p class="ah-intro reveal reveal-d2">
+        Passionate developer. <strong>Problem solver.</strong><br>Lifelong learner with an eye on financial markets and emerging technologies.
+      </p>
+      <div class="ah-body reveal reveal-d3">
+        <p>I'm <strong style="color:var(--text);">Harshit Sengar</strong>, a Spring Boot Developer at Infosys Ltd., building scalable backend services in the Telecom domain. My journey in software started with curiosity and a keyboard — and hasn't stopped since.</p>
+        <p>After earning my B.Tech in Information Technology from Poornima College of Engineering (CGPA 7.9), I joined Infosys, completing 5 months of immersive training at the Mysore campus before being deployed to a production Telecom project in Pune.</p>
+        <p>I specialize in Java, Spring Boot, and Microservices Architecture, with a strong focus on code quality tools like SonarQube and CI/CD pipelines. Outside backend work, I've built Python projects ranging from voice assistants to GUI games.</p>
+      </div>
+    </div>
+    <div class="ah-info-grid reveal reveal-d2">
+      <div class="info-row"><span class="info-k">Location</span><span class="info-v">Chittorgarh, Rajasthan, India</span></div>
+      <div class="info-row"><span class="info-k">Current Role</span><span class="info-v">Spring Boot Developer</span></div>
+      <div class="info-row"><span class="info-k">Company</span><span class="info-v">Infosys Ltd.</span></div>
+      <div class="info-row"><span class="info-k">Domain</span><span class="info-v">Telecom</span></div>
+      <div class="info-row"><span class="info-k">Email</span><span class="info-v"><a href="mailto:harshit.sengar1202@gmail.com">harshit.sengar1202@gmail.com</a></span></div>
+      <div class="info-row"><span class="info-k">Phone</span><span class="info-v">+91 6378461601</span></div>
+      <div class="info-row"><span class="info-k">LinkedIn</span><span class="info-v"><a href="https://www.linkedin.com/in/harshit-sengar-666395172" target="_blank">harshit-sengar ↗</a></span></div>
+      <div class="info-row"><span class="info-k">GitHub</span><span class="info-v"><a href="https://github.com/Harshitsengar1202" target="_blank">Harshitsengar1202 ↗</a></span></div>
+      <div class="info-row"><span class="info-k">Instagram</span><span class="info-v"><a href="https://www.instagram.com/sengar1202/" target="_blank">@sengar1202 ↗</a></span></div>
+      <div class="info-row"><span class="info-k">Interests</span><span class="info-v">New Tech · Financial Markets</span></div>
+      <div class="info-row"><span class="info-k">Status</span><span class="info-v" style="color:var(--accent);">● Open to opportunities</span></div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths">
+    <div class="label reveal">Core Strengths</div>
+    <div class="str-grid">
+      <div class="str-card reveal">
+        <div class="str-icon">🧠</div>
+        <div class="str-title">Problem Solving</div>
+        <div class="str-desc">Deconstructing complex technical challenges into clean, efficient solutions — from RESTful APIs to full microservice systems.</div>
+      </div>
+      <div class="str-card reveal reveal-d1">
+        <div class="str-icon">🚀</div>
+        <div class="str-title">Leadership</div>
+        <div class="str-desc">Led the Technical Team in the College Fest and mentored peers through collaborative projects and hackathons.</div>
+      </div>
+      <div class="str-card reveal reveal-d2">
+        <div class="str-icon">💬</div>
+        <div class="str-title">Communication</div>
+        <div class="str-desc">Bridging the gap between technical and non-technical stakeholders — translating business requirements into reliable code.</div>
+      </div>
+      <div class="str-card reveal">
+        <div class="str-icon">📐</div>
+        <div class="str-title">Code Quality</div>
+        <div class="str-desc">Committed to clean code principles, static analysis with SonarQube, and maintainable architecture patterns.</div>
+      </div>
+      <div class="str-card reveal reveal-d1">
+        <div class="str-icon">🔄</div>
+        <div class="str-title">Continuous Learning</div>
+        <div class="str-desc">Researching new technologies and financial markets — always expanding both hard and soft skill sets.</div>
+      </div>
+      <div class="str-card reveal reveal-d2">
+        <div class="str-icon">🤝</div>
+        <div class="str-title">Collaboration</div>
+        <div class="str-desc">Cross-functional team player at Infosys — comfortable in agile environments and rapid prototyping contexts like hackathons.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="label reveal">Education</div>
+    <div class="edu-list">
+      <div class="edu-item reveal">
+        <div class="edu-year">2021–25</div>
+        <div>
+          <div class="edu-deg">B.Tech — Information Technology</div>
+          <div class="edu-inst">Poornima College of Engineering, Jaipur · Rajasthan Technical University</div>
+        </div>
+        <div class="edu-grade">7.9 CGPA</div>
+      </div>
+      <div class="edu-item reveal reveal-d1">
+        <div class="edu-year">2021</div>
+        <div>
+          <div class="edu-deg">Class XII — Science</div>
+          <div class="edu-inst">Birla Shiksha Kendra · CBSE Board</div>
+        </div>
+        <div class="edu-grade">86.8%</div>
+      </div>
+      <div class="edu-item reveal reveal-d2">
+        <div class="edu-year">2019</div>
+        <div>
+          <div class="edu-deg">Class X</div>
+          <div class="edu-inst">Birla Shiksha Kendra · CBSE Board</div>
+        </div>
+        <div class="edu-grade">83.8%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section id="activities">
+    <div class="label reveal">Co-Curricular</div>
+    <div class="act-grid">
+      <div class="act-item reveal">
+        <div class="act-num">01</div>
+        <div>Participated in the <strong style="color:var(--text);">Government of India Mini Smart India Hackathon</strong> (March 2022) — rapid prototyping and solution pitching under pressure.</div>
+      </div>
+      <div class="act-item reveal reveal-d1">
+        <div class="act-num">02</div>
+        <div><strong style="color:var(--text);">Led the Technical Team</strong> in the College Fest — organized events, coordinated teams, and ensured smooth technical execution.</div>
+      </div>
+      <div class="act-item reveal reveal-d2">
+        <div class="act-num">03</div>
+        <div>Active participant in various <strong style="color:var(--text);">competitive coding challenges</strong> — sharpening problem-solving and algorithmic thinking.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Harshit Sengar</span>
+    <span><a href="contact.html">Get in touch →</a></span>
+  </footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

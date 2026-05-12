@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Harshit Sengar</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#skills-hero {
+  padding: 5rem 3.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.bg-text {
+  position: absolute; right: -5%; top: -15%;
+  font-family: var(--font-display);
+  font-size: 20vw; color: rgba(232,255,71,.015);
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.page-heading { font-family: var(--font-display); font-size: clamp(4rem,9vw,8rem); line-height: .9; letter-spacing: .04em; margin-bottom: 1.5rem; }
+.page-heading .accent { color: var(--accent); }
+.page-sub { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--muted); max-width: 600px; line-height: 1.7; }
+
+/* PROFICIENCY BARS */
+#proficiency { padding: 5rem 3.5rem; border-bottom: 1px solid var(--border); }
+.prof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+.prof-item { margin-bottom: 1.8rem; }
+.prof-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+.prof-name { font-size: .82rem; font-weight: 600; }
+.prof-pct { font-family: var(--font-display); font-size: 1rem; color: var(--accent); }
+.prof-bar { height: 3px; background: var(--border); position: relative; overflow: hidden; }
+.prof-fill {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: linear-gradient(90deg, var(--accent), rgba(232,255,71,.4));
+  width: 0;
+  transition: width 1.2s cubic-bezier(.16,1,.3,1);
+}
+.prof-fill.animate { width: var(--w); }
+
+/* SKILL CATEGORIES */
+#categories { padding: 5rem 3.5rem; background: var(--surface); }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3rem; }
+.cat-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 2rem; position: relative; overflow: hidden;
+  transition: all .35s;
+}
+.cat-card:hover { border-color: var(--accent-border); transform: translateY(-6px); }
+.cat-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width .4s; }
+.cat-card:hover::after { width: 100%; }
+.cat-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+.cat-title {
+  font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .06em;
+  margin-bottom: 1.2rem; color: var(--text);
+}
+.tag-cloud { display: flex; flex-wrap: wrap; gap: .5rem; }
+.stag {
+  padding: .28rem .7rem;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  border: 1px solid var(--accent-border);
+  color: var(--accent); background: var(--accent-dim);
+  transition: all .2s;
+}
+.stag:hover { background: var(--accent); color: var(--bg); }
+
+/* TOOLS MARQUEE */
+#tools-strip {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex; gap: 3rem;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  display: flex; align-items: center; gap: .8rem;
+  font-family: var(--font-display); font-size: 1.1rem;
+  letter-spacing: .12em; color: var(--muted2);
+  flex-shrink: 0;
+}
+.marquee-item span { color: var(--accent); font-size: .7rem; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* LEARNING */
+#learning { padding: 5rem 3.5rem; }
+.learn-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 3rem; }
+.learn-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 2rem; transition: all .3s;
+}
+.learn-card:hover { border-color: var(--accent-border); }
+.learn-label { font-size: .62rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
+.learn-title { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
+.learn-desc { font-size: .76rem; color: var(--muted); line-height: 1.8; }
+
+@media(max-width:900px){
+  #skills-hero, #proficiency, #categories, #learning { padding: 3rem 1.5rem; }
+  .prof-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .learn-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:560px){
+  .cat-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">HS.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page page-fade">
+
+  <!-- HERO -->
+  <section id="skills-hero">
+    <div class="bg-text">SKILL</div>
+    <div class="label reveal">Technical Arsenal</div>
+    <h1 class="page-heading reveal reveal-d1">WHAT I<br>WORK <span class="accent">WITH.</span></h1>
+    <p class="page-sub reveal reveal-d2">A full breakdown of the technologies, frameworks, and tools I use to build reliable, scalable software.</p>
+  </section>
+
+  <!-- PROFICIENCY BARS -->
+  <section id="proficiency">
+    <div class="label reveal">Core Proficiency</div>
+    <div class="prof-grid">
+      <div class="reveal">
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">Java</span><span class="prof-pct">90%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:90%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">Spring Boot</span><span class="prof-pct">85%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:85%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">Microservices</span><span class="prof-pct">80%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:80%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">Python</span><span class="prof-pct">82%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:82%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">MySQL / SQL</span><span class="prof-pct">78%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:78%"></div></div>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">REST APIs</span><span class="prof-pct">88%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:88%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">SonarQube</span><span class="prof-pct">75%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:75%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">GitHub / Git</span><span class="prof-pct">80%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:80%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">Jenkins</span><span class="prof-pct">65%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:65%"></div></div>
+        </div>
+        <div class="prof-item">
+          <div class="prof-header"><span class="prof-name">HTML / CSS</span><span class="prof-pct">72%</span></div>
+          <div class="prof-bar"><div class="prof-fill" style="--w:72%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS MARQUEE -->
+  <div id="tools-strip">
+    <div class="marquee-track">
+      <div class="marquee-item"><span>▸</span> Java</div>
+      <div class="marquee-item"><span>▸</span> Spring Boot</div>
+      <div class="marquee-item"><span>▸</span> Python</div>
+      <div class="marquee-item"><span>▸</span> Microservices</div>
+      <div class="marquee-item"><span>▸</span> MySQL</div>
+      <div class="marquee-item"><span>▸</span> Oracle DB</div>
+      <div class="marquee-item"><span>▸</span> SonarQube</div>
+      <div class="marquee-item"><span>▸</span> Jenkins</div>
+      <div class="marquee-item"><span>▸</span> JFrog</div>
+      <div class="marquee-item"><span>▸</span> GitHub</div>
+      <div class="marquee-item"><span>▸</span> Postman</div>
+      <div class="marquee-item"><span>▸</span> Flask</div>
+      <div class="marquee-item"><span>▸</span> Tkinter</div>
+      <div class="marquee-item"><span>▸</span> Selenium</div>
+      <div class="marquee-item"><span>▸</span> Maven</div>
+      <!-- duplicate -->
+      <div class="marquee-item"><span>▸</span> Java</div>
+      <div class="marquee-item"><span>▸</span> Spring Boot</div>
+      <div class="marquee-item"><span>▸</span> Python</div>
+      <div class="marquee-item"><span>▸</span> Microservices</div>
+      <div class="marquee-item"><span>▸</span> MySQL</div>
+      <div class="marquee-item"><span>▸</span> Oracle DB</div>
+      <div class="marquee-item"><span>▸</span> SonarQube</div>
+      <div class="marquee-item"><span>▸</span> Jenkins</div>
+      <div class="marquee-item"><span>▸</span> JFrog</div>
+      <div class="marquee-item"><span>▸</span> GitHub</div>
+      <div class="marquee-item"><span>▸</span> Postman</div>
+      <div class="marquee-item"><span>▸</span> Flask</div>
+      <div class="marquee-item"><span>▸</span> Tkinter</div>
+      <div class="marquee-item"><span>▸</span> Selenium</div>
+      <div class="marquee-item"><span>▸</span> Maven</div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="label reveal">By Category</div>
+    <div class="cat-grid">
+      <div class="cat-card reveal">
+        <div class="cat-icon">⚙️</div>
+        <div class="cat-title">Languages</div>
+        <div class="tag-cloud">
+          <span class="stag">Java</span>
+          <span class="stag">Python</span>
+          <span class="stag">C / C++</span>
+          <span class="stag">JavaScript</span>
+          <span class="stag">HTML</span>
+          <span class="stag">CSS</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d1">
+        <div class="cat-icon">🧩</div>
+        <div class="cat-title">Frameworks</div>
+        <div class="tag-cloud">
+          <span class="stag">Spring Boot</span>
+          <span class="stag">Spring</span>
+          <span class="stag">Maven</span>
+          <span class="stag">Microservices</span>
+          <span class="stag">Flask</span>
+          <span class="stag">React</span>
+          <span class="stag">Matplotlib</span>
+          <span class="stag">Tkinter</span>
+          <span class="stag">Selenium</span>
+          <span class="stag">Pyttsx3</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d2">
+        <div class="cat-icon">🗄️</div>
+        <div class="cat-title">Databases</div>
+        <div class="tag-cloud">
+          <span class="stag">MySQL</span>
+          <span class="stag">Oracle</span>
+          <span class="stag">SQLite</span>
+          <span class="stag">HSQL</span>
+          <span class="stag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d3">
+        <div class="cat-icon">🛠️</div>
+        <div class="cat-title">Tools & DevOps</div>
+        <div class="tag-cloud">
+          <span class="stag">Jenkins</span>
+          <span class="stag">SonarQube</span>
+          <span class="stag">JFrog</span>
+          <span class="stag">GitHub</span>
+          <span class="stag">Postman</span>
+          <span class="stag">ServiceNow</span>
+          <span class="stag">Salesforce</span>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">🖥️</div>
+        <div class="cat-title">IDEs</div>
+        <div class="tag-cloud">
+          <span class="stag">Eclipse</span>
+          <span class="stag">VS Code</span>
+          <span class="stag">PyCharm</span>
+          <span class="stag">Python IDLE</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d1">
+        <div class="cat-icon">💡</div>
+        <div class="cat-title">Concepts</div>
+        <div class="tag-cloud">
+          <span class="stag">REST APIs</span>
+          <span class="stag">OOP</span>
+          <span class="stag">Data Structures</span>
+          <span class="stag">Code Quality</span>
+          <span class="stag">Static Analysis</span>
+          <span class="stag">CI/CD</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d2">
+        <div class="cat-icon">☁️</div>
+        <div class="cat-title">Enterprise Platforms</div>
+        <div class="tag-cloud">
+          <span class="stag">ServiceNow</span>
+          <span class="stag">Salesforce</span>
+        </div>
+      </div>
+      <div class="cat-card reveal reveal-d3">
+        <div class="cat-icon">📐</div>
+        <div class="cat-title">Architecture</div>
+        <div class="tag-cloud">
+          <span class="stag">Microservices</span>
+          <span class="stag">MVC</span>
+          <span class="stag">RESTful Design</span>
+          <span class="stag">API Gateway</span>
+          <span class="stag">Service Mesh</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY LEARNING -->
+  <section id="learning">
+    <div class="label reveal">Currently Exploring</div>
+    <div class="learn-grid">
+      <div class="learn-card reveal">
+        <div class="learn-label">Backend</div>
+        <div class="learn-title">Advanced Spring Security</div>
+        <div class="learn-desc">Diving deeper into JWT-based authentication, OAuth2, and role-based access control in Spring Boot microservices.</div>
+      </div>
+      <div class="learn-card reveal reveal-d1">
+        <div class="learn-label">Cloud</div>
+        <div class="learn-title">Cloud & Containerization</div>
+        <div class="learn-desc">Exploring Docker and Kubernetes for containerizing Spring Boot services and deploying on cloud platforms.</div>
+      </div>
+      <div class="learn-card reveal reveal-d2">
+        <div class="learn-label">Finance × Tech</div>
+        <div class="learn-title">Algorithmic Trading</div>
+        <div class="learn-desc">Combining my interest in financial markets with Python to explore automated trading strategies and data analysis.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Harshit Sengar</span>
+    <span><a href="contact.html">Contact Me →</a></span>
+  </footer>
+</div>
+
+<script src="main.js"></script>
+<script>
+// Animate proficiency bars on scroll
+const fills = document.querySelectorAll('.prof-fill');
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('animate'); barObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.3 });
+fills.forEach(f => barObserver.observe(f));
+</script>
+</body>
+</html>
