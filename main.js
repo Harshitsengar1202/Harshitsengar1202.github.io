@@ -2,9 +2,28 @@
 const cur = document.getElementById('cur');
 const curRing = document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
+
+const updateCursorPos = (x, y) => {
+  mx = x;
+  my = y;
+  cur.style.left = (mx - 5) + 'px';
+  cur.style.top = (my - 5) + 'px';
+};
+
 document.addEventListener('mousemove', e => {
-  mx=e.clientX; my=e.clientY;
-  cur.style.left=(mx-5)+'px'; cur.style.top=(my-5)+'px';
+  updateCursorPos(e.clientX, e.clientY);
+});
+
+document.addEventListener('touchmove', e => {
+  if (e.touches.length > 0) {
+    updateCursorPos(e.touches[0].clientX, e.touches[0].clientY);
+  }
+}, { passive: true });
+
+document.addEventListener('touchstart', e => {
+  if (e.touches.length > 0) {
+    updateCursorPos(e.touches[0].clientX, e.touches[0].clientY);
+  }
 });
 (function animRing(){
   rx+=(mx-rx-19)*.13; ry+=(my-ry-19)*.13;
