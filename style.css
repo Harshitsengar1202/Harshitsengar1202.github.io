@@ -36,6 +36,12 @@ body {
 body:has(a:hover) #cur { transform:scale(3); }
 body:has(a:hover) #cur-ring { opacity:.8; transform:scale(1.4); }
 
+/* Hide cursor on touch devices */
+@media (hover: none) {
+  #cur, #cur-ring { display: none; }
+  body { cursor: auto; }
+}
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
