@@ -23,6 +23,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
+  color-scheme: dark;
   font-family: var(--font-body);
   font-weight: 400;
   overflow-x: hidden;
